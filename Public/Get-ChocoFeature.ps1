@@ -19,9 +19,9 @@ function Get-ChocoFeature {
 
         Retrieves current setting of useBackgroundService feature
     #>
-    [cmdletBinding()]
+    [cmdletBinding(HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Get-ChocoFeature.md")]
     Param(
-        [Parameter(ValueFromPipeline,Position=0,HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Get-ChocoFeature.md")]
+        [Parameter(ValueFromPipeline,Position=0)]
         [String]
         [ValidateScript({Test-Path $_})]
         $ChocolateyConfig = "$env:ChocolateyInstall\config\chocolatey.config",
