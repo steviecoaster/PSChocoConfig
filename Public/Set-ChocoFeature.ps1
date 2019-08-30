@@ -12,7 +12,7 @@ function Set-ChocoFeature {
         .PARAMETER Name
         Name of the feature. Dynamically generated from the configuration file for tab-completion.
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Set-ChocoFeature.md")]
     Param (
         
         [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ValueFromPipeline)]

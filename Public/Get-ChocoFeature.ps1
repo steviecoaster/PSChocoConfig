@@ -21,7 +21,7 @@ function Get-ChocoFeature {
     #>
     [cmdletBinding()]
     Param(
-        [Parameter(ValueFromPipeline,Position=0)]
+        [Parameter(ValueFromPipeline,Position=0,HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Get-ChocoFeature.md")]
         [String]
         [ValidateScript({Test-Path $_})]
         $ChocolateyConfig = "$env:ChocolateyInstall\config\chocolatey.config",

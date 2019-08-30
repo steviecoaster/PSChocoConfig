@@ -16,7 +16,7 @@ function Get-ChocoConfig {
         Get-ChocoConfig -ConfigurationItem proxy
         
     #>
-    [cmdletBinding()]
+    [cmdletBinding(HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Get-ChocoConfig.md")]
     Param(
         [Parameter(ValueFromPipeline,Position=0)]
         [string]

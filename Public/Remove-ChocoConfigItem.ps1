@@ -15,7 +15,7 @@ function Remove-ChocoConfigItem {
 
         Sets the proxy configuration setting to a blank default value
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Remove-ChocoConfigItem.md")]
     Param (
         [Parameter(Mandatory,Position=0)]
         [String]
