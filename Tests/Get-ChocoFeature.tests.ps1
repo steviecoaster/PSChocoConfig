@@ -38,9 +38,9 @@ Describe "Get-ChocoConfig PS$PSVersion" {
 '@
         }
 
-        Context 'Return all Configuration Items' {
+        Context 'Return all Features' {
 
-            $GetChocoConfig = Get-ChocoConfig
+            $GetChocoConfig = Get-ChocoFeature
 
             It 'Should invoke Get-Content 1 time' {
                 Assert-MockCalled Get-Content -Times 1 -Exactly
@@ -51,13 +51,13 @@ Describe "Get-ChocoConfig PS$PSVersion" {
             }
 
             It 'Should return 9 properties' {
-                $GetChocoConfig.count | Should -Be 9
+                $GetChocoConfig.count | Should -Be 3
             }
         }
 
-        Context 'Return the value for a specified single Configuration Item: proxy' {
+        Context 'Return the value for a specified single Feature: checksumFiles' {
 
-            $GetChocoConfig = Get-ChocoConfig -ConfigurationItem 'proxy'
+            $GetChocoConfig = Get-ChocoFeature -Feature 'checksumFiles'
 
             It 'Should invoke Get-Content 1 time' {
                 Assert-MockCalled Get-Content -Times 1 -Exactly
@@ -71,14 +71,14 @@ Describe "Get-ChocoConfig PS$PSVersion" {
                 @($GetChocoConfig).count | Should -Be 1
             }
 
-            It 'Should return a blank value for proxy' {
-                ($GetChocoConfig | Where-Object {$_.Key -eq 'proxy'}).value | Should -Be ''
+            It 'Should be True' {
+                $GetChocoConfig.enabled | Should -Be 'true'
             }
         }
 
-        Context 'Return the value for multiple specified Configuration Items: webRequestTimeoutSeconds,proxyBypassOnLocal' {
+        Context 'Return the value for multiple specified Features: checksumFiles,autoUninstaller' {
 
-            $GetChocoConfig = Get-ChocoConfig -ConfigurationItem 'webRequestTimeoutSeconds','proxyBypassOnLocal'
+            $GetChocoConfig = Get-ChocoFeature -Feature checksumFiles,autoUninstaller
 
             It 'Should invoke Get-Content 1 time' {
                 Assert-MockCalled Get-Content -Times 1 -Exactly
@@ -92,12 +92,12 @@ Describe "Get-ChocoConfig PS$PSVersion" {
                 @($GetChocoConfig).count | Should -Be 2
             }
 
-            It 'Should return 30 for webRequestTimeoutSeconds' {
-                ($GetChocoConfig | Where-Object {$_.Key -eq 'webRequestTimeoutSeconds'}).value | Should -Be 30
+            It 'checksumFiles should be Enabled' {
+                ($GetChocoConfig | Where-Object {$_.Name -eq 'checksumFiles'}).enabled | Should -Be "true"
             }
 
-            It 'Should return true for proxyBypassOnLocal' {
-                ($GetChocoConfig | Where-Object {$_.Key -eq 'proxyBypassOnLocal'}).value | Should -Be 'true'
+            It 'autoUninstaller should be Enabled' {
+                ($GetChocoConfig | Where-Object {$_.Name -eq 'autoUninstaller'}).enabled | Should -Be 'true'
             }
         }
     }
