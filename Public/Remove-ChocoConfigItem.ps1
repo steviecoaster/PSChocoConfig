@@ -25,7 +25,7 @@ function Remove-ChocoConfigItem {
 
     process {
 
-        If($PSCmdlet.ShouldProcess("$Name","Setting value: $Value")){
+        If($PSCmdlet.ShouldProcess("$Name","Removing value: $Value")){
         
             $choco = choco config unset --name="'$Name'"
             Write-Host "$($choco[-1])"-ForegroundColor Yellow
