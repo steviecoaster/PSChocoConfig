@@ -13,10 +13,12 @@ Param(
     $Deploy
 )
 
-
+#Make some variables, shall we?
 $innvocationPath = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 $PSModuleRoot = Split-Path -Parent $innvocationPath
 $TestPath = Join-Path $PSModuleRoot "Tests"
+
+#Do Stuff based on passed Args
 Switch($true){
 
     $Test {
@@ -27,26 +29,29 @@ Switch($true){
 
         Invoke-Pester -Script $TestPath -OutputFile "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig.Results.xml" -OutputFormat 'NUnitXml'
 
+        #
         Get-ChildItem $env:Build_ArtifactStagingDirectory
     }
 
     $Build {
 
-        If(Test-Path "$PSModuleRoot\PSChocoConfig"){
-            Remove-Item "$PSModuleRoot\PSChocoConfig" -Recurse -Force
+        If(Test-Path "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig"){
+            Remove-Item "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig" -Recurse -Force
         }
 
-        $null = New-Item "$PSModuleRoot\PSChocoConfig" -ItemType Directory
+        $null = New-Item "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig" -ItemType Directory
 
         Get-ChildItem $PSModuleRoot\Public\*.ps1 | Foreach-Object {
 
-            Get-Content $_.FullName | Add-Content "$PSModuleRoot\PSChocoConfig\PSChocoConfig.psm1"
+            Get-Content $_.FullName | Add-Content "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig\PSChocoConfig.psm1"
         }
 
-        Copy-Item "$PSModuleRoot\PSChocoConfig.psd1" "$PSModuleRoot\PSChocoConfig"
+        Copy-Item "$PSModuleRoot\PSChocoConfig.psd1" "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig"
+
+        #Verification of contents
+        Get-ChildItem -Path "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig" -Recurse
 
     }
-
 
     $Deploy {
 
@@ -54,7 +59,7 @@ Switch($true){
         Try {
     
             $deployCommands = @{
-                Path = (Resolve-Path -Path "$PSModuleRoot\PSChocoConfig")
+                Path = (Resolve-Path -Path "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig")
                 NuGetApiKey = $env:NuGetApiKey
                 ErrorAction = 'Stop'
             }
@@ -75,4 +80,5 @@ Switch($true){
 
         echo "Please Provide one of the following switches: -Test, -Build, -Deploy"
     }
+
 }
