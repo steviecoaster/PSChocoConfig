@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-ChocoConfigItem
+# Set-ChocoConfig
 
 ## SYNOPSIS
 Sets the specified configuration item to the provided value
@@ -13,7 +13,7 @@ Sets the specified configuration item to the provided value
 ## SYNTAX
 
 ```
-Set-ChocoConfigItem [-Name] <String> [-Value] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-ChocoConfig [-Name] <String> [-Value] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +24,10 @@ Dynamically generates name values from chocolatey config file.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-ChocoConfig -Name Proxy -Value 'foo.bar'
 ```
 
-{{ Add example description here }}
+Sets chocolatey proxy value to 'foo.bar'
 
 ## PARAMETERS
 
