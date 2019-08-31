@@ -51,6 +51,10 @@ Switch($true){
         #Verification of contents
         Get-ChildItem -Path "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig" -Recurse
 
+        #Verify we can load the module and see cmdlets
+        Import-Module "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig\PSChocoConfig.psd1"
+        Get-Command -Module PSChocoConfig
+
     }
 
     $Deploy {
