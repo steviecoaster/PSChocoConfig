@@ -1,4 +1,4 @@
-function Set-ChocoConfigItem {
+function Set-ChocoConfig {
     <#
         .SYNOPSIS
         Sets the specified configuration item to the provided value
@@ -11,8 +11,12 @@ function Set-ChocoConfigItem {
 
         .PARAMETER Name
         Name of the configuration item. Dynamically generated from the configuration file for tab-completion.
+
+        .EXAMPLE
+
+        Set-ChocoConfig -Name proxy -Value 'https://awesome.proxy.local'
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Set-ChocoConfigItem.md")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Set-ChocoConfig.md")]
     Param (
 
         [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ValueFromPipeline)]

@@ -1,4 +1,4 @@
-function Remove-ChocoConfigItem {
+function Clear-ChocoConfig {
     <#
         .SYNOPSIS
         Unsets the chosen configuration item
@@ -11,11 +11,11 @@ function Remove-ChocoConfigItem {
         The name of the configuration item to change
 
         .EXAMPLE
-        Remove-ChocoConfigItem -Name proxy
+        Clear-ChocoConfig -Name proxy
 
         Sets the proxy configuration setting to a blank default value
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Remove-ChocoConfigItem.md")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Clear-ChocoConfig.md")]
     Param (
         [Parameter(Mandatory,Position=0)]
         [String]
