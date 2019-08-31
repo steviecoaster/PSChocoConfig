@@ -25,8 +25,9 @@ Switch($true){
             Install-Module -Name Pester -SkipPublisherCheck -Force
         }
 
-        Invoke-Pester -Script $TestPath
+        Invoke-Pester -Script $TestPath -OutputFile "$($env:Build_ArtifactStagingDirectory)\PSChocoConfig.Results.xml" -OutputFormat 'NUnitXml'
 
+        Get-ChildItem $env:Build_ArtifactStagingDirectory
     }
 
     $Build {
