@@ -68,7 +68,7 @@ Switch($true){
                 ErrorAction = 'Stop'
             }
             
-            Publish-Module @deployCommands -WhatIf
+            Publish-Module @deployCommands
     
         }
 
