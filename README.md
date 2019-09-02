@@ -11,9 +11,10 @@ Installing the module is simple! It's available on the PSGallery, so just run `I
 - Function: Get-ChocoConfig 
 
 ```powershell
-
 PS C:\> Get-ChocoConfig
+```
 
+```text
 key                            value description
 ---                            ----- -----------
 cacheLocation                        Cache location if not TEMP folder. Replaces `$env:TEMP` value.
@@ -25,15 +26,15 @@ proxyPassword                        Optional proxy password. Encrypted. Availab
 webRequestTimeoutSeconds       30    Default timeout for web requests. Available in 0.9.10+.
 proxyBypassList                      Optional proxy bypass list. Comma separated. Available in 0.10.4+.
 proxyBypassOnLocal             true  Bypass proxy for local connections. Available in 0.10.4+.
-
 ```
 
 - Function: Get-ChocoFeature
 
 ```powershell
-
 PS C:\> Get-ChocoFeature
+```
 
+```text
 name                                   enabled setExplicitly description
 ----                                   ------- ------------- -----------
 checksumFiles                          true    true          Checksum files when pulled in from internet (based on package).
@@ -63,29 +64,29 @@ scriptsCheckLastExitCode               false   false         Scripts Check $Last
 - Function: Set-ChocoConfig
 
 ```powershell
-
 PS C:\> Set-ChocoConfigItem -Name cacheLocation -Value C:\temp
+```
 
+```text
 Confirm
 Are you sure you want to perform this action?
 Performing the operation "Setting value: C:\temp" on target "cacheLocation".
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
 Updated cacheLocation = C:\temp
-
 ```
 
 - Function: Set-ChocoFeature
 
 ```powershell
-
 PS C:\> Set-ChocoFeature -Name checksumFiles -State Disabled
+```
 
+```text
 Confirm
 Are you sure you want to perform this action?
 Performing the operation "Set-ChocoFeature" on target "Ensuring feature checksumFiles is set to Disabled".
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
 Disabled checksumFiles
-
 ```
 
 ## Improvements
