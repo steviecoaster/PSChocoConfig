@@ -15,7 +15,7 @@ function Clear-ChocoConfig {
 
         Sets the proxy configuration setting to a blank default value
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Clear-ChocoConfig.md")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Clear-ChocoConfig")]
     Param (
         [Parameter(Mandatory,Position=0)]
         [ArgumentCompleter({

@@ -16,7 +16,7 @@ function Set-ChocoConfig {
 
         Set-ChocoConfig -Name proxy -Value 'https://awesome.proxy.local'
     #>
-    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Set-ChocoConfig.md")]
+    [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Set-ChocoConfig")]
     Param (
 
         [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ValueFromPipeline)]
