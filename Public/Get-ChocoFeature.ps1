@@ -19,7 +19,7 @@ function Get-ChocoFeature {
 
         Retrieves current setting of useBackgroundService feature
     #>
-    [cmdletBinding(HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Get-ChocoFeature.md")]
+    [cmdletBinding(HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Get-ChocoFeature")]
     Param(
         [Parameter(ValueFromPipeline,Position=0)]
         [String]
