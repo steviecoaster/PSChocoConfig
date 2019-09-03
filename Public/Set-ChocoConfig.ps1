@@ -22,7 +22,19 @@ function Set-ChocoConfig {
         [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ValueFromPipeline)]
         [ArgumentCompleter({
             param($Command,$Parameter,$WordTocomplete,$CommandAst,$FakeBoundParams)
-            Get-ChocoConfig | Select -ExpandProperty key
+            $results = Get-ChocoConfig | Select -ExpandProperty key
+
+            If($WordTocomplete){
+
+                $results.Where{ $_ -match "^$WordTocomplete"}
+                
+            }
+
+            Else {
+
+                $results
+
+            }
         })]
         [String]
         $Name,

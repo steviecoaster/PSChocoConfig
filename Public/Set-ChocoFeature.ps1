@@ -18,7 +18,19 @@ function Set-ChocoFeature {
         [Parameter(Mandatory,Position=0,ValueFromPipelineByPropertyName,ValueFromPipeline)]
         [ArgumentCompleter({
             param($Command,$Parameter,$WordTocomplete,$CommandAst,$FakeBoundParams)
-            Get-Chocofeature | Select -ExpandProperty Name
+            $results = Get-Chocofeature | Select -ExpandProperty Name
+
+            If($WordTocomplete){
+
+                $results.Where{ $_ -match "^$WordTocomplete"}
+                
+            }
+
+            Else {
+
+                $results
+
+            }
         })]
         [String]
         $Name,
