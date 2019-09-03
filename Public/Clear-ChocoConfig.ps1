@@ -18,7 +18,24 @@ function Clear-ChocoConfig {
     [cmdletBinding(SupportsShouldProcess,ConfirmImpact="High",HelpUri="https://github.com/steviecoaster/PSChocoConfig/blob/master/docs/Clear-ChocoConfig.md")]
     Param (
         [Parameter(Mandatory,Position=0)]
+        [ArgumentCompleter({
+            param($Command,$Parameter,$WordTocomplete,$CommandAst,$FakeBoundParams)
+            $results = Get-ChocoConfig | Select -ExpandProperty key
+
+            If($WordTocomplete){
+
+                $results.Where{ $_ -match "^$WordTocomplete"}
+                
+            }
+
+            Else {
+
+                $results
+
+            }
+        })]
         [String]
+
         $Name
 
     )
