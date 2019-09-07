@@ -13,7 +13,7 @@ function Disable-ChocoSource {
     Disable-ChocoSource -Source bob
     #>
     
-    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess)]
+    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Disable-ChocoSource")]
     Param(
         [Parameter(Mandatory,Position=0)]
         [String]
