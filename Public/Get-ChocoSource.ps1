@@ -24,10 +24,10 @@ function Get-ChocoSource {
 
     #>
     
-    [cmdletBinding()]
+    [cmdletBinding(HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Get-ChocoSource")]
     Param(
         
-        [Parameter(ValueFromPipeline,Position=0,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Get-ChocoSource")]
+        [Parameter(ValueFromPipeline,Position=0)]
         [string]
         [ValidateScript({Test-Path $_})]
         $ChocolateyConfig = "$env:ChocolateyInstall\config\chocolatey.config",
