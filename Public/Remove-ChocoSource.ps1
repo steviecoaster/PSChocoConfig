@@ -24,8 +24,24 @@ function Remove-ChocoSource {
 
         If($PSCmdlet.ShouldProcess("$Source","Setting value: Enabled")){
             
-            $choco = choco source remove --name="'$source'"
-            Write-Verbose -Message "$($choco[-1])"
+            $StartInfo = [System.Diagnostics.ProcessStartInfo]::new()
+            $source = 'dumb'
+            $args = @('source','remove',"-n=$source")
+            $StartInfo.CreateNoWindow = $true
+            $StartInfo.UseShellExecute = $false
+            $StartInfo.RedirectStandardOutput = $true
+            $StartInfo.RedirectStandardError = $true
+            $StartInfo.FileName = 'choco'
+            $StartInfo.Arguments = $args
+
+            $process = [System.Diagnostics.Process]::new()
+            $process.StartInfo = $StartInfo
+            [void]$process.Start()
+
+            $output = $process.StandardOutput.ReadToEnd()
+            $process.WaitForExit()
+
+            Write-Verbose $output
     
         }
 

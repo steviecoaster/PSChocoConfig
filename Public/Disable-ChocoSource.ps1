@@ -24,17 +24,26 @@ function Disable-ChocoSource {
 
         If($PSCmdlet.ShouldProcess("$Source","Setting value: Disabled")){
             
-            $choco = Start-Process choco -ArgumentList 'source', 'disable', '--name="'$source'"' -PassThru -Wait
-            If($choco.ExitCode -ne 0){
+            $StartInfo = [System.Diagnostics.ProcessStartInfo]::new()
+            $source = 'dumb'
+            $args = @('source','disable',"-n=$source")
+            $StartInfo.CreateNoWindow = $true
+            $StartInfo.UseShellExecute = $false
+            $StartInfo.RedirectStandardOutput = $true
+            $StartInfo.RedirectStandardError = $true
+            $StartInfo.FileName = 'choco'
+            $StartInfo.Arguments = $args
 
-                Write-Error "An error occured in operation"
+            $process = [System.Diagnostics.Process]::new()
+            $process.StartInfo = $StartInfo
+            [void]$process.Start()
 
-            }
+            $output = $process.StandardOutput.ReadToEnd()
+            $process.WaitForExit()
 
-            Else {
-
-                Write-Verbose -Message "Disabled source $Source"
-            }
+            Write-Verbose $output
+            
+           
     
         }
 
