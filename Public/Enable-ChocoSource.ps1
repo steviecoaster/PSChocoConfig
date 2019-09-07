@@ -24,9 +24,17 @@ function Enable-ChocoSource {
 
         If($PSCmdlet.ShouldProcess("$Source","Setting value: Enabled")){
             
-            $choco = choco source enable --name="'$source'"
-            Write-Verbose -Message "$($choco[-1])"
-    
+            $choco = Start-Process choco -ArgumentList 'source', 'enable', '--name="'$source'"' -PassThru -Wait
+            If($choco.ExitCode -ne 0){
+
+                Write-Error "An error occured in operation"
+
+            }
+
+            Else {
+
+                Write-Verbose -Message "Enabled source $Source"
+            }
         }
 
     }

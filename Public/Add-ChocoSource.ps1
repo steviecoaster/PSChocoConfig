@@ -52,14 +52,14 @@ function Add-ChocoSource {
     General notes
     #>
     
-    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Add-ChocoSource")]
+    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Add-ChocoSource",DefaultParameterSetName="Source")]
     Param(
-        [Parameter(Mandatory,Position=0)]
+        [Parameter(Mandatory,Position=0,ParameterSetName="Source")]
         [Alias("FriendlyName")]
         [String]
         $Name,
 
-        [Parameter(Mandatory,Position=1)]
+        [Parameter(Mandatory,Position=1,ParameterSetName="Source")]
         [String]
         $Source,
 
@@ -121,10 +121,16 @@ function Add-ChocoSource {
             
             $choco = Start-Process choco -ArgumentList 'source','add',$args -PassThru -Wait
 
-            If($choco.ExitCode -ne 1){
+            If($choco.ExitCode -ne 0){
 
                 Write-Error "An issue occured: $($_.Exception.Message)"
                 
+            }
+
+            Else {
+
+                Write-Verbose -Message "Added source: $Name"
+            
             }
         }
     }
