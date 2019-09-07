@@ -35,7 +35,7 @@ steps:
     targetType: filePath
     filePath: ./Build/build.ps1
     arguments: '-Deploy'
-  enabled: false
+  enabled: true
   env:
     NugetApiKey: $(NuGetApiKey)
 
