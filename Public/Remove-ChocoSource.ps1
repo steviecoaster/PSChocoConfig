@@ -13,7 +13,7 @@ function Remove-ChocoSource {
     Remove-ChocoSource -Source bob
     #>
     
-    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess)]
+    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Remove-ChocoSource")]
     Param(
         [Parameter(Mandatory,Position=0)]
         [String]

@@ -52,7 +52,7 @@ function Add-ChocoSource {
     General notes
     #>
     
-    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess)]
+    [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess.HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Add-ChocoSource")]
     Param(
         [Parameter(Mandatory,Position=0)]
         [Alias("FriendlyName")]
