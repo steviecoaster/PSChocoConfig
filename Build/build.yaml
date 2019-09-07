@@ -1,6 +1,10 @@
 pool:
   name: Azure Pipelines
   vmImage: vs2017-win2016
+  trigger:
+  branches:
+    include:
+    - master
 steps:
 - task: PowerShell@2
   displayName: 'Run Pester Tests'
