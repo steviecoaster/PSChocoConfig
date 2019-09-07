@@ -5,70 +5,60 @@ online version:
 schema: 2.0.0
 ---
 
-# Clear-ChocoConfig
+# Get-ChocoSource
 
 ## SYNOPSIS
-Unsets the chosen configuration item
+List currently configured choco sources
 
 ## SYNTAX
 
 ```
-Clear-ChocoConfig [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-ChocoSource [[-ChocolateyConfig] <String>] [-Source <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command wraps 'choco config' to make setting configuration items easier.
-Dynamically generates names from configuration file.
+Reads the chocolatey config file and returns a list of currently configured choco sources
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Clear-ChocoConfig -Name proxy
+Get-ChocoSource
 ```
 
-Sets the proxy configuration setting to a blank default value
+Returns all currently configured choco sources
+
+### EXAMPLE 2
+```
+Get-ChocoSource -Source internal
+```
+
+Returns details about the choco source named "internal".
 
 ## PARAMETERS
 
-### -Name
-The name of the configuration item to change
+### -ChocolateyConfig
+The path the config file to read from
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Position: 1
+Default value: "$env:ChocolateyInstall\config\chocolatey.config"
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Source
+The friendly name of the source to retrieve
 
 ```yaml
-Type: SwitchParameter
+Type: String[]
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named

@@ -5,33 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-ChocoConfig
+# Remove-ChocoSource
 
 ## SYNOPSIS
-Sets the specified configuration item to the provided value
+Removes the specified choco source
 
 ## SYNTAX
 
 ```
-Set-ChocoConfig [-Name] <String> [-Value] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-ChocoSource [-Source] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Wraps 'choco config' to make setting configuration values easier.
-Dynamically generates name values from chocolatey config file.
+Removes the specified choco source
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-ChocoConfig -Name proxy -Value 'https://awesome.proxy.local'
+Remove-ChocoSource -Source bob
 ```
 
 ## PARAMETERS
 
-### -Name
-Name of the configuration item.
-Dynamically generated from the configuration file for tab-completion.
+### -Source
+The friendly name of the source to remove
 
 ```yaml
 Type: String
@@ -40,21 +38,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Value
-The value to set of the Name of the configuration item.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
