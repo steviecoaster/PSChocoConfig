@@ -1,6 +1,6 @@
 # PSChocoConfig
 
-[![Build status](https://dev.azure.com/stephen0130/PSSaturday/_apis/build/status/PSChocoConfig)](https://dev.azure.com/stephen0130/PSSaturday/_build/latest?definitionId=11)
+![Azure DevOps builds](https://img.shields.io/azure-devops/build/stephen0130/bc669ea6-a490-4eee-b495-d30ca8df3f5c/16)
 
 PSChocoConfig is a PowerShell module for interacting with Chocolatey's configuration data as PowerShell objects. You can do things like return config and feature details, as well as set those configuration items all via familiar PowerShell cmdlets.
 
