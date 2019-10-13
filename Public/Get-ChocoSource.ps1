@@ -32,7 +32,7 @@ function Get-ChocoSource {
         [ValidateScript({Test-Path $_})]
         $ChocolateyConfig = "$env:ChocolateyInstall\config\chocolatey.config",
 
-        [Parameter()]
+        [Parameter(Position = 1)]
         [string[]]
         $Source
 
