@@ -16,6 +16,22 @@ function Remove-ChocoSource {
     [cmdletBinding(ConfirmImpact="High",SupportsShouldProcess,HelpUri="https://github.com/steviecoaster/PSChocoConfig/wiki/Remove-ChocoSource")]
     Param(
         [Parameter(Mandatory,Position=0)]
+        [ArgumentCompleter({
+            param($Command,$Parameter,$WordTocomplete,$CommandAst,$FakeBoundParams)
+            $results = Get-ChocoSource | Select -ExpandProperty value
+
+            If($WordTocomplete){
+
+                $results.Where{ $_ -match "^$WordTocomplete"}
+                
+            }
+
+            Else {
+
+                $results
+
+            }
+        })]
         [String]
         $Source
     )
